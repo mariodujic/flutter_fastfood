@@ -1,0 +1,39 @@
+name: flutter_app
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^0.4.2
+
+
+  cupertino_icons: ^0.1.2
+  path_provider: ^0.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+  assets:
+    - assets/images/cheesburger.jpg
+    - assets/images/pizza.jpg
+    - assets/images/drinks.jpg
+    - assets/images/vegetarian.jpg
+    - assets/images/sweets.jpg
+  fonts:
+    - family: ubuntuBold
+      fonts:
+        - asset: assets/fonts/Ubuntu-Bold.ttf
+    - family: ubuntuRegular
+      fonts:
+        - asset: assets/fonts/Ubuntu-Regular.ttf
+
+
+  uses-material-design: true
