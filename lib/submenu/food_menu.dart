@@ -1,42 +1,41 @@
 import 'package:flutter/material.dart';
 import 'food_menu_item.dart' as item;
 import '../cart/floating_button/cart_button.dart';
-
-class FoodMenu extends StatelessWidget {
-  final String title;
-
-  FoodMenu(this.title);
-
-  @override
-  Widget build(BuildContext context) {
-    Set foodSetAuto = new Set();
-    if (this.title.toLowerCase() == "pizza") {
-      foodSetAuto.add(new Food("Margaritta", "Opis", 22));
-      foodSetAuto.add(new Food("Riva", "Sve najbolje", 25));
-      foodSetAuto.add(new Food("Varoš", "Sve ludilo", 27));
-    } else if (this.title.toLowerCase() == "burgers") {
-      foodSetAuto.add(new Food("Cheesburger", "A lot of cheese", 22));
-      foodSetAuto.add(new Food("Tunaburger", "A lot of fish, a lot", 25));
-      foodSetAuto.add(new Food("Hamburger", "Just bunch of ham ham ham", 27));
-    }
-
-    return new ListItem(this.title, foodSetAuto);
-  }
-}
+import 'dart:async';
+import '../service/database/data.dart';
+import 'dart:convert';
 
 class ListItem extends StatefulWidget {
   String title;
-  Set foodSet;
 
-  ListItem(this.title, this.foodSet);
+  ListItem(this.title);
 
   @override
   _ListItemState createState() => _ListItemState();
 }
 
 class _ListItemState extends State<ListItem> {
+  List data;
+  List submenuList;
+
+  Future<Set> printData() async {
+    var dat = await dbData();
+
+    setState(() {
+      var dec = jsonDecode(dat);
+      data = dec["menu"];
+    });
+  }
+
+  @override
+  void initState() {
+    this.printData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    submenuList = data[0]["submenu"];
+    print(submenuList.length);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -44,11 +43,11 @@ class _ListItemState extends State<ListItem> {
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) => item.FoodMenuItem(
-              widget.foodSet.elementAt(index).getName(),
-              widget.foodSet.elementAt(index).getDescription(),
-              widget.foodSet.elementAt(index).getPrice(),
+              submenuList[index]["name"],
+              submenuList[index]["description"],
+              submenuList[index]["price"],
             ),
-        itemCount: widget.foodSet.length,
+        itemCount: submenuList.length,
       ),
       floatingActionButton: new CartButton(),
       backgroundColor: Colors.black,

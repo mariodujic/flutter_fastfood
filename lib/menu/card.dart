@@ -12,10 +12,8 @@ class Card extends StatefulWidget {
 }
 
 class _CardState extends State<Card> {
-
   final double boxHeight = 120.0;
   final double boxRadius = 11.0;
-
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class _CardState extends State<Card> {
                 fontSize: 40.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-            fontFamily: "ubuntuBold"),
+                fontFamily: "ubuntuBold"),
           ),
         ),
         height: boxHeight,

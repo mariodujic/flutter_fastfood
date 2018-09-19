@@ -1,0 +1,38 @@
+{
+  "menu": [
+    {
+      "type": "Pizza",
+      "image": "pizza.jpg",
+      "submenu": [
+        {
+          "name": "Margarita",
+          "description": "Best pizza in all the Margarita world",
+          "price": 22
+        },
+        {
+          "name": "Riva",
+          "description": "Very much mmmm...",
+          "price": 22
+        }
+      ]
+
+
+    },
+    {
+      "type": "Burgers",
+      "image": "cheesburger.jpg"
+    },
+    {
+      "type": "Vegetarian",
+      "image": "vegetarian.jpg"
+    },
+    {
+      "type": "Drinks",
+      "image": "drinks.jpg"
+    },
+    {
+      "type": "Sweets",
+      "image": "sweets.jpg"
+    }
+  ]
+}

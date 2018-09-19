@@ -27,6 +27,7 @@ flutter:
     - assets/images/drinks.jpg
     - assets/images/vegetarian.jpg
     - assets/images/sweets.jpg
+    - assets/data/food_data.json
   fonts:
     - family: ubuntuBold
       fonts:
