@@ -1,8 +1,5 @@
-# flutter_app
+# flutter_fastfood
 
-A new Flutter application.
+trying out flutter.
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+<img src="https://i.imgur.com/WBdJKlF.jpg" width="280">   <img src="https://i.imgur.com/pIMaTHF.png" width="280">   <img src="https://i.imgur.com/0Yj8Amr.png" width="280">
