@@ -18,6 +18,11 @@
           "name": "Ultra",
           "description": "Has all topings",
           "price": 21
+        },
+        {
+          "name": "Empty",
+          "description": "Only crust",
+          "price": 5
         }
       ]
 

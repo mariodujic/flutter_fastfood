@@ -35,8 +35,11 @@ class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     for (var i = 0; i < data.length; i++) {
-      submenuList.add(data[i]["submenu"]);
+      if (data[i]["type"] == widget.title) {
+        submenuList = data[i]["submenu"];
+      }
     }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -44,11 +47,10 @@ class _ListItemState extends State<ListItem> {
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) => item.FoodMenuItem(
-              submenuList[index][index]["name"],
-              submenuList[index][index]["description"],
-              submenuList[index][index]["price"],
-            ),
-        itemCount: 2,
+            submenuList[index]["name"],
+            submenuList[index]["description"],
+            submenuList[index]["price"]),
+        itemCount: submenuList.length,
       ),
       floatingActionButton: new CartButton(),
       backgroundColor: Colors.black,
