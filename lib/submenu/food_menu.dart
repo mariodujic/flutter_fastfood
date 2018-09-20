@@ -16,7 +16,7 @@ class ListItem extends StatefulWidget {
 
 class _ListItemState extends State<ListItem> {
   List data;
-  List submenuList;
+  List submenuList = new List();
 
   Future<Set> printData() async {
     var dat = await dbData();
@@ -34,8 +34,9 @@ class _ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
-    submenuList = data[0]["submenu"];
-    print(submenuList.length);
+    for (var i = 0; i < data.length; i++) {
+      submenuList.add(data[i]["submenu"]);
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -43,38 +44,14 @@ class _ListItemState extends State<ListItem> {
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) => item.FoodMenuItem(
-              submenuList[index]["name"],
-              submenuList[index]["description"],
-              submenuList[index]["price"],
+              submenuList[index][index]["name"],
+              submenuList[index][index]["description"],
+              submenuList[index][index]["price"],
             ),
-        itemCount: submenuList.length,
+        itemCount: 2,
       ),
       floatingActionButton: new CartButton(),
       backgroundColor: Colors.black,
     );
-  }
-}
-
-class Food {
-  String name;
-  String description;
-  int price;
-
-  Food(String name, String description, int price) {
-    this.name = name;
-    this.description = description;
-    this.price = price;
-  }
-
-  String getName() {
-    return this.name;
-  }
-
-  String getDescription() {
-    return this.description;
-  }
-
-  int getPrice() {
-    return this.price;
   }
 }
